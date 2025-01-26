@@ -48,7 +48,7 @@ mkdir -p ~/privasea/config && cd ~/privasea
 ### Step 4: Generate a New Wallet Keystore
 Run the following command to generate a new wallet keystore:
 ```
-docker run --rm -it -v "$HOME/privasea/config:/app/config" privasea/acceleration-node-beta:latest
+docker run --rm -it -v "$HOME/privasea/config:/app/config" privasea/acceleration-node-beta:latest ./node-calc new_keystore
 ```
 > Note: You need to input a password during this step. Save this password securely for future use. Also, note down the node address displayed during this process.
 
@@ -73,5 +73,5 @@ Visit the [Privanetix Dashboard](https://deepsea-beta.privasea.ai/privanetixNode
 #### Step 7: Start the Node
 Run the following command to start your Privasea Privanetix Node. Replace ENTER_YOUR_KEYSTORE_PASSWORD with the password you used earlier:
 ```
-KEYSTORE_PASSWORD=ENTER_YOUR_KEYSTORE_PASSWORD && docker run -d --name privanetix-node -v "$HOME/privasea/config:/app/config" privasea/acceleration-node-beta:latest
+KEYSTORE_PASSWORD=ENTER_YOUR_KEYSTORE_PASSWORD && docker run -d --name privanetix-node -v "$HOME/privasea/config:/app/config" -e KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD privasea/acceleration-node-beta:latest
 ```
